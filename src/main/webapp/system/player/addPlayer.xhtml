@@ -16,23 +16,23 @@
                   
                <h:panelGrid id="form-fields" columns="2" cellpadding="10">
                      
-                  <p:outputLabel value="Character" for="input-char" />
-                  <p:inputText id="input-char" maxlength="10" required="true"
-                               value="#{playerController.currentPlayer.character}" style="width:130px"
+                  <p:outputLabel value="Character" for="input-user" />
+                  <p:inputText id="input-user" maxlength="10" required="true"
+                               value="#{playerController.object.character}" style="width:130px"
                                requiredMessage="Character is required!"/>
                      
-                  <p:outputLabel value="In-Game login" for="input-login" />
-                  <p:inputText id="input-login" maxlength="15"
-                               value="#{playerController.currentPlayer.login}" style="width:185px"/>
+                  <p:outputLabel value="In-Game login" for="input-pass" />
+                  <p:inputText id="input-pass" maxlength="15"
+                               value="#{playerController.object.login}" style="width:185px"/>
                      
-                  <p:outputLabel value="Status" for="input-status" />
-                  <p:inputText id="input-status" maxlength="10"
-                               value="#{playerController.currentPlayer.status}" style="width:130px" />
+                  <p:outputLabel value="Status" for="input-email" />
+                  <p:inputText id="input-email" maxlength="10"
+                               value="#{playerController.object.status}" style="width:130px" />
                                       
                   <p:spacer/>
                   
-                  <p:commandButton value="Salvar" id="commandButton-addNew" icon="ui-icon-gear"
-                                   actionListener="#{playerController.addNew}" update="form-fields"/>
+                  <p:commandButton value="Salvar" id="commandButton-salvar" icon="ui-icon-gear"
+                                   actionListener="#{playerController.insert}" update="form-fields"/>
                      
                </h:panelGrid>
                   
