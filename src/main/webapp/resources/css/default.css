@@ -1,0 +1,43 @@
+.ui-widget {  
+    font-size: 12px !important;  
+} 
+ 
+html,
+body {
+   background-image: url("#{resource['images/b17.png']}");
+   margin:0;
+   padding:0;
+   height:100%;   
+}
+
+#content {
+   min-height:80%;
+   position:relative;
+}
+
+#header {
+   padding:0px;
+}
+
+#body {
+   padding:10px;
+   padding-bottom:60px;
+}
+
+#footer {
+   bottom:0;
+   width:100%;
+   height:42px;
+}
+
+.logo {
+	background-image: url("#{resource['images/logo_small.png']}");
+	background-position:center;
+    background-repeat: no-repeat;
+    height: 49px;
+    width: 107px;
+	margin-left: 20px;
+	margin-right: 20px;
+	text-indent: -9999em;
+	float: left;
+}

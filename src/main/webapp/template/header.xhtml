@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+	
+         <p:menubar>
+
+            <p:menuitem><p:link styleClass="logo" value="Wildzem" outcome="/system/home.xhtml" /></p:menuitem>
+		<p:menuitem value="Home" icon="ui-icon-home" style="margin-top: 10px" url="/system/home.xhtml"/>
+            
+            <p:submenu label="Player" icon="ui-icon-pencil" style="margin-top: 10px" >
+               <p:menuitem value="Add new player" icon="ui-icon-plus" url="/system/player/addPlayer.xhtml"/>
+               <p:menuitem value="Player list" icon="ui-icon-calculator" url="/system/player/listPlayer.xhtml"/>
+            </p:submenu>
+            
+            <p:submenu label="Staff" icon="ui-icon-pencil" style="margin-top: 10px" >
+               <p:menuitem value="Add new staff" icon="ui-icon-plus" url="/system/staff/addStaff.xhtml"/>
+               <p:menuitem value="Staff list" icon="ui-icon-calculator" url="/system/staff/listStaff.xhtml"/>
+		</p:submenu>
+            
+            <p:submenu label="Server" icon="ui-icon-pencil" style="margin-top: 10px" >
+               <p:menuitem value="Add new server" icon="ui-icon-plus"/>
+               <p:menuitem value="Server list" icon="ui-icon-calculator"/>
+		</p:submenu>
+            
+            <p:submenu label="Quiz" icon="ui-icon-pencil" style="margin-top: 10px" >
+               <p:menuitem value="Add new quiz" icon="ui-icon-plus"/>
+               <p:menuitem value="Quiz list" icon="ui-icon-calculator"/>
+		</p:submenu>
+            
+            <p:submenu label="Event" icon="ui-icon-pencil" style="margin-top: 10px" >
+               <p:menuitem value="Host an event" icon="ui-icon-plus"/>
+               <p:menuitem value="Event list" icon="ui-icon-calculator"/>
+		</p:submenu>
+            
+		<f:facet name="options">
+               <h:outputText value="Welcome #{loginController.staff.name}!" style="margin-top:10px; margin-right:15px;"/>
+               <p:commandButton value="Logout" icon="ui-icon-extlink" action="#{loginController.logOut}" style="margin-top: 10px"/>
+		</f:facet>
+         </p:menubar> 
+		
+	</h:form>
+	
+</html>
