@@ -24,7 +24,7 @@ public class ServerController implements Serializable, GenericController<Server>
     
     
     @Inject private Server currentServer;
-    @Inject private GenericDAO<Server, String> serverDao;
+    private GenericDAO<Server, String> serverDao;
     
     @Produces private List<Server> serverList;
     

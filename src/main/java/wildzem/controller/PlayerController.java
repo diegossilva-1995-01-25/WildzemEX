@@ -25,7 +25,7 @@ public class PlayerController implements Serializable, GenericController<Player>
     
     
     @Inject private Player currentPlayer;
-    @Inject private GenericDAO<Player, Integer> playerDao;
+    private GenericDAO<Player, Integer> playerDao;
     
     @Produces private List<Player> playerList;
     

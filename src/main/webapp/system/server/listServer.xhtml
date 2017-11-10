@@ -16,52 +16,32 @@
          <ui:include src="/system/staff/editStaff.xhtml" />
       </p:dialog>
       
-      <h:form style="margin:auto;margin-left:2%;" id="form-list">
-         <p:dataTable id="dataTable-registros" var="staff" value="#{staffController.list}" 
-			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="width:98%;"
+      <h:form id="form-list">
+         <p:dataTable id="dataTable" var="server" value="#{serverController.serverList}" 
+			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="margin:auto; width:50%;"
                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
             
-            <p:column headerText="ID" style="width:42px;">
-               <h:outputText value="#{staff.id}"/>
+            <p:column headerText="Code" style="width:42px;">
+               <h:outputText value="#{server.code}"/>
             </p:column>
             
-            <p:column headerText="Username" style="width:17.5%;">
-               <h:outputText value="#{staff.user}"/>
+            <p:column headerText="Location" style="width:50%;">
+               <h:outputText value="#{server.location}"/>
             </p:column>
             
-            <p:column headerText="Password" style="width:17.5%;">
-               <h:outputText value="#{staff.password}"/>
-            </p:column>
-            
-            <p:column headerText="Character" style="width:17.5%;">
-               <h:outputText value="#{staff.name}"/>
-            </p:column>
-            
-            <p:column headerText="E-Mail" style="width:27.5%;">
-               <h:outputText value="#{staff.email}"/>
-            </p:column>
-            
-            <p:column headerText="Status" style="width:17.5%;">
-               <h:outputText value="#{staff.status}"/>
-            </p:column>
-            
-            <p:column headerText="Position" style="width:17.5%;">
-               <h:outputText value="#{staff.staffPosition}"/>
-            </p:column>
-            
-            <p:column headerText="Server" style="width:17.5%;">
-               <h:outputText value="#{staff.server}"/>
+            <p:column headerText="Status" style="width:50%;">
+               <h:outputText value="#{server.status}"/>
             </p:column>
             
             <p:column headerText="" style="width:25px;">
                <p:commandButton icon="ui-icon-pencil" title="Edit staff member" ajax="true"
                                 oncomplete="PF('dialog-edit').show();" update="dialog-edit"
-                                actionListener="#{staffController.editStaff(staff)}"/>
+                                actionListener="#{serverController.editRecord(server)}"/>
             </p:column>
             
             <p:column headerText="" style="width:25px;">
                <p:commandButton icon="ui-icon-trash" title="Delete staff member" ajax="true"
-                                update="@form" actionListener="#{staffController.delete(staff.id)}"/>
+                                update="@form" actionListener="#{serverController.deleteRecord(server)}"/>
             </p:column>
             
          </p:dataTable>

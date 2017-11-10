@@ -25,7 +25,7 @@ public class StaffController implements Serializable, GenericController<Staff> {
     
     
     @Inject private Staff currentStaff;
-    @Inject private GenericDAO<Staff, Integer> staffDao;
+    private GenericDAO<Staff, Integer> staffDao;
     
     @Produces private List<Staff> staffList;
     
