@@ -11,25 +11,25 @@
       <h:panelGrid id="form-fields" columns="2" cellpadding="10">
          
          <p:outputLabel value="ID" for="input-ID" />
-         <p:inputText id="input-ID" value="#{playerController.object.id}" 
+         <p:inputText id="input-ID" value="#{playerController.currentPlayer.id}" 
                       readonly="true" style="width:75px"/>
          
          <p:outputLabel value="Character" for="input-user" />
          <p:inputText id="input-user" required="true"
-                      value="#{playerController.object.character}" style="width:130px"
+                      value="#{playerController.currentPlayer.character}" style="width:130px"
                       requiredMessage="Character name is required!" />
          
          <p:outputLabel value="In-Game login" for="input-pass" />
          <p:inputText id="input-pass" maxlength="20"
-                      value="#{playerController.object.login}" style="width:185px"/>
+                      value="#{playerController.currentPlayer.login}" style="width:185px"/>
          
          <p:outputLabel value="Status" for="input-name" />
          <p:inputText id="input-name" maxlength="10"
-                      value="#{playerController.object.status}" style="width:130px" />
+                      value="#{playerController.currentPlayer.status}" style="width:130px" />
          
          <p:spacer/>
          <p:commandButton value="Update" id="button-update" icon="ui-icon-gear"
-	 			  update="form-list" actionListener="#{staffController.update}"
+                          update="form-list" actionListener="#{staffController.updateRecord}"
                           oncomplete="if (args &amp;&amp; !args.validationFailed) PF('dialog-edit').hide();"/>
          
          <p:spacer/>

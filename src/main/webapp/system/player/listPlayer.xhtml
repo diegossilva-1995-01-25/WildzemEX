@@ -17,7 +17,7 @@
       </p:dialog>
       
       <h:form style="margin:auto;margin-left:2%;" id="form-list">
-         <p:dataTable id="dataTable-registros" var="player" value="#{playerController.list}" 
+         <p:dataTable id="dataTable-registros" var="player" value="#{playerController.playerList}" 
 			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="width:98%;"
                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
             
@@ -44,12 +44,12 @@
             <p:column headerText="" style="width:25px;">
                <p:commandButton icon="ui-icon-pencil" title="Edit staff member" ajax="true"
                                 oncomplete="PF('dialog-edit').show();" update="dialog-edit"
-                                actionListener="#{playerController.editStaff(player)}"/>
+                                actionListener="#{playerController.editRecord(player)}"/>
             </p:column>
             
             <p:column headerText="" style="width:25px;">
                <p:commandButton icon="ui-icon-trash" title="Delete staff member" ajax="true"
-                                update="@form" actionListener="#{playerController.delete(player.id)}"/>
+                                update="@form" actionListener="#{playerController.deleteRecord(player)}"/>
             </p:column>
             
          </p:dataTable>
