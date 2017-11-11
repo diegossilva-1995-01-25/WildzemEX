@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wildzem.persistence;
 
 import wildzem.model.StaffPosition;
@@ -10,6 +5,13 @@ import wildzem.model.StaffPosition;
 /**
  *
  * @author Caio
+ * @version 1.0
+ * 
+ * Implementation of GenericDAO
+ * 
+ * T = StaffPosition
+ * K = String
+ * 
  */
 public class StaffPositionDAO extends GenericDAO<StaffPosition, String> {
 

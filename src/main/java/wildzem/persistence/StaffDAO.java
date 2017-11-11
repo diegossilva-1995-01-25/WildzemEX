@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wildzem.persistence;
 
 import javax.persistence.Query;
@@ -12,6 +7,13 @@ import wildzem.utils.CommonOperations;
 /**
  *
  * @author Caio
+ * @version 1.0
+ * 
+ * Implementation of GenericDAO
+ * 
+ * T = Staff
+ * K = Integer
+ * 
  */
 public class StaffDAO extends GenericDAO<Staff, Integer> {
 
@@ -19,6 +21,15 @@ public class StaffDAO extends GenericDAO<Staff, Integer> {
         super(Staff.class);
     }
     
+    /**
+     * 
+     * Verifies the login sent by the login.xhtml page by finding Staff member
+     * by Username and Password.
+     * 
+     * @param staff: Object originated from login.xhtml
+     * 
+     * @return Returns the full record if the Query is positive, else it returns null
+     */
     public Staff validateLogin(Staff staff) {
              
         try {
