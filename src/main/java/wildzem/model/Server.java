@@ -7,23 +7,30 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ *
+ * @author Caio
+ * @version 0.1
+ * 
+ * Entity/model for Server members
+ */
 @Entity
 @Table(name="tb_server")
 public class Server implements Serializable {
-    private static final long serialVersionUID = 4453506133583341569L;
-	
+
     @Id
-    @Column(name="SV_CODE")
+    @Column(name="SV_CODE", columnDefinition = "CHAR", length = 2)
     private String code;
-	
-    @Column(name="SV_LOCATION")
+
+    @Column(name="SV_LOCATION", columnDefinition = "VARCHAR", length = 15)
     private String location;
-	
-    @Column(name="SV_STATUS")
+    
+    @Column(name="SV_STATUS", columnDefinition = "VARCHAR", length = 10)
     private String status;
 	
-    //////////////////
-	
+    /*
+     * Getter/Setter section
+     */
     public String getCode() {
         return code;
     }	
@@ -43,5 +50,8 @@ public class Server implements Serializable {
     }	
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Server() {
     }
 }

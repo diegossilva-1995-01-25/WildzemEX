@@ -7,7 +7,7 @@ import wildzem.model.StaffPosition;
 import wildzem.persistence.GenericDAO;
 import wildzem.persistence.StaffPositionDAO;
 
-@Converter
+@Converter(autoApply = true)
 public class StaffPositionConverter implements AttributeConverter<StaffPosition, String>{
 
 	@Override

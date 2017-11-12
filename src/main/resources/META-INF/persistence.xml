@@ -3,13 +3,17 @@
   <persistence-unit name="Wildzem" transaction-type="RESOURCE_LOCAL">
     <description>Persistence mapping for Wildzem</description>
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    
+    <class>wildzem.model.Player</class>
     <class>wildzem.model.Staff</class>
     <class>wildzem.model.Server</class>
+    <class>wildzem.model.StaffConverter</class>
+    
     <class>wildzem.model.converter.StaffPositionConverter</class>
     <class>wildzem.model.converter.ServerConverter</class>
     <properties>
       <property name="hibernate.show_sql" value="true"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.hbm2ddl.auto" value="validate"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>

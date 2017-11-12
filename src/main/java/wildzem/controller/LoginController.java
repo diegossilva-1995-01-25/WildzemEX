@@ -87,12 +87,11 @@ public class LoginController implements Serializable {
                  * If the user exists set pass to null and add it to the session scope
                  * Then redirect to home
                  */
-                sessionStaff.setPassword(null);
                 staff = new Staff();
                 
                 FacesContext context = FacesContext.getCurrentInstance();
                 
-                context.getExternalContext().getSessionMap().put("authUser" + sessionStaff.getId(), sessionStaff);
+                context.getExternalContext().getSessionMap().put("authUser", sessionStaff);
                 
                 return "system/home?faces-redirect=true";
             }
@@ -127,6 +126,6 @@ public class LoginController implements Serializable {
     public Staff getStaffSession() {
         
         FacesContext context = FacesContext.getCurrentInstance();
-        return (Staff) context.getExternalContext().getSessionMap().get("authUser" + sessionStaff.getId());
+        return (Staff) context.getExternalContext().getSessionMap().get("authUser");
     }
 }

@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="tb_player")
 public class Player implements Serializable {
-    private static final long serialVersionUID = -1868942485704297631L;
+
     
     @Id
     @Column(name="PL_PLAYERID")
@@ -34,16 +34,16 @@ public class Player implements Serializable {
     @Column(name="PL_STATUS")
     private String status;
 	
-    //////////////////
-
+    /*
+     * Getter/Setter section
+     */
     public int getId() {
         return id;
     }
     public void setId(int id) {
         this.id = id;
     }
-          
-      
+              
     public String getCharacter() {
         return character;
     }
@@ -51,23 +51,20 @@ public class Player implements Serializable {
         this.character = character;
     }
 	
-	
     public String getLogin() {
         return login;
     }	
     public void setLogin(String login) {
         this.login = login;
     }
-	
-	
+		
     public int getWinCount() {
         return winCount;
     }	
     public void setWinCount(int winCount) {
         this.winCount = winCount;
     }
-	
-	
+		
     public String getStatus() {
         return status;
     }	

@@ -7,7 +7,7 @@ import wildzem.model.Server;
 import wildzem.persistence.GenericDAO;
 import wildzem.persistence.ServerDAO;
 
-@Converter
+@Converter(autoApply = true)
 public class ServerConverter implements AttributeConverter<Server, String>{
 
 	@Override
