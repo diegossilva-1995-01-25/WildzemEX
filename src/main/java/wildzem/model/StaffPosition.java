@@ -1,6 +1,7 @@
 package wildzem.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -60,5 +61,45 @@ public class StaffPosition implements Serializable {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    /*
+     * Equals/Hash Code section
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.code);
+        hash = 13 * hash + Objects.hashCode(this.position);
+        hash = 13 * hash + this.accessLevel;
+        hash = 13 * hash + Objects.hashCode(this.description);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        final StaffPosition other = (StaffPosition) obj;
+        
+        System.out.println( this.code.equals( other.getCode() ) );
+        System.out.println( other.getCode() + " vs " + this.code );
+        System.out.println( other.getPosition() + " vs " + this.position );
+        System.out.println( other.getAccessLevel()+ " vs " + this.accessLevel );
+        
+        if ( !this.code.equals( other.getCode() ) ) {
+            
+            return false;
+        }
+              
+        return true;
     }
 }

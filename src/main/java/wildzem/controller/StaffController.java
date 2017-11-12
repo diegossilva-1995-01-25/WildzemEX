@@ -7,9 +7,13 @@ import javax.enterprise.inject.Produces;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import wildzem.model.Server;
 import wildzem.model.Staff;
+import wildzem.model.StaffPosition;
 import wildzem.persistence.GenericDAO;
+import wildzem.persistence.ServerDAO;
 import wildzem.persistence.StaffDAO;
+import wildzem.persistence.StaffPositionDAO;
 import wildzem.utils.CommonOperations;
 
 /**
@@ -17,7 +21,6 @@ import wildzem.utils.CommonOperations;
  * @author Caio
  * @version 0.5
  */
-
 @ViewScoped
 @Named(value="staffController")
 public class StaffController implements Serializable, GenericController<Staff> {
@@ -25,13 +28,14 @@ public class StaffController implements Serializable, GenericController<Staff> {
     
     
     @Inject private Staff currentStaff;
+    @Inject private List<Server> serverList;
+    @Inject private List<StaffPosition> positionList;
     private GenericDAO<Staff, Integer> staffDao;
     
     @Produces private List<Staff> staffList;
-    
-    
+
     /*
-     * Creates a new instance of StaffBean
+     * Creates a new instance of StaffController
      * 
      * init will initialize the Generic DAO as one of it's implementations in order
      * populate the object list.
@@ -41,7 +45,7 @@ public class StaffController implements Serializable, GenericController<Staff> {
     
     @PostConstruct
     public void init() {
-        
+
         staffDao = new StaffDAO();
         staffList = staffDao.selectAll();
     }
@@ -95,4 +99,22 @@ public class StaffController implements Serializable, GenericController<Staff> {
     public void setStaffList(List<Staff> staffList) {
         this.staffList = staffList;
     } 
+
+    public List<Server> getServerList() {
+        return serverList;
+    }
+
+    public void setServerList(List<Server> serverList) {
+        this.serverList = serverList;
+    }
+
+    public List<StaffPosition> getPositionList() {
+        return positionList;
+    }
+
+    public void setPositionList(List<StaffPosition> positionList) {
+        this.positionList = positionList;
+    }
+    
+    
 }

@@ -1,6 +1,7 @@
 package wildzem.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Quiz implements Serializable {
 	private static final long serialVersionUID = 9185898374554903975L;
@@ -69,4 +70,56 @@ public class Quiz implements Serializable {
 	public void setStaff(Staff staff) {
 		this.staff = staff;
 	}
+      
+    /*
+     * Equals/Hash Code section
+     */
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 19 * hash + this.id;
+        hash = 19 * hash + Objects.hashCode(this.question);
+        hash = 19 * hash + Objects.hashCode(this.answer);
+        hash = 19 * hash + this.uses;
+        hash = 19 * hash + (this.isShared ? 1 : 0);
+        hash = 19 * hash + Objects.hashCode(this.quizCategory);
+        hash = 19 * hash + Objects.hashCode(this.staff);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Quiz other = (Quiz) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.uses != other.uses) {
+            return false;
+        }
+        if (this.isShared != other.isShared) {
+            return false;
+        }
+        if (!Objects.equals(this.question, other.question)) {
+            return false;
+        }
+        if (!Objects.equals(this.answer, other.answer)) {
+            return false;
+        }
+        if (!Objects.equals(this.quizCategory, other.quizCategory)) {
+            return false;
+        }
+        if (!Objects.equals(this.staff, other.staff)) {
+            return false;
+        }
+        return true;
+    }
 }

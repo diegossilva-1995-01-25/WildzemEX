@@ -15,8 +15,8 @@ import wildzem.utils.CommonOperations;
 /**
  *
  * @author Caio
+ * @version 0.5
  */
-
 @ViewScoped
 @Named(value="serverController")
 public class ServerController implements Serializable, GenericController<Server> {
@@ -26,7 +26,9 @@ public class ServerController implements Serializable, GenericController<Server>
     @Inject private Server currentServer;
     private GenericDAO<Server, String> serverDao;
     
-    @Produces private List<Server> serverList;
+    @Produces 
+    @Named("serverList")
+    private List<Server> serverList;
     
     
     /*

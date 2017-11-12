@@ -16,8 +16,8 @@ import wildzem.utils.CommonOperations;
 /**
  *
  * @author Caio
+ * @version 0.5
  */
-
 @ViewScoped
 @Named(value="playerController")
 public class PlayerController implements Serializable, GenericController<Player> {
@@ -27,7 +27,9 @@ public class PlayerController implements Serializable, GenericController<Player>
     @Inject private Player currentPlayer;
     private GenericDAO<Player, Integer> playerDao;
     
-    @Produces private List<Player> playerList;
+    @Produces 
+    @Named("playerList")
+    private List<Player> playerList;
     
     
     /*

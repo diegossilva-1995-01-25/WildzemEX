@@ -3,6 +3,7 @@ package wildzem.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class Event implements Serializable {
 	private static final long serialVersionUID = -1415507314234384840L;
@@ -80,4 +81,60 @@ public class Event implements Serializable {
 	public void setStaff(Staff staff) {
 		this.staff = staff;
 	}
+      
+    /*
+     * Equals/Hash Code section
+     */
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.date);
+        hash = 53 * hash + this.winnerNumber;
+        hash = 53 * hash + Objects.hashCode(this.prize);
+        hash = 53 * hash + Objects.hashCode(this.status);
+        hash = 53 * hash + Objects.hashCode(this.startTime);
+        hash = 53 * hash + Objects.hashCode(this.endTime);
+        hash = 53 * hash + Objects.hashCode(this.player);
+        hash = 53 * hash + Objects.hashCode(this.staff);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Event other = (Event) obj;
+        if (this.winnerNumber != other.winnerNumber) {
+            return false;
+        }
+        if (!Objects.equals(this.prize, other.prize)) {
+            return false;
+        }
+        if (!Objects.equals(this.date, other.date)) {
+            return false;
+        }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.startTime, other.startTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.endTime, other.endTime)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Objects.equals(this.staff, other.staff)) {
+            return false;
+        }
+        return true;
+    }
 }

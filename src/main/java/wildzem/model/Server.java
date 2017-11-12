@@ -1,6 +1,7 @@
 package wildzem.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,7 +52,45 @@ public class Server implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    public Server() {
+    
+    /*
+     * Equals/Hash Code section
+     */
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.code);
+        hash = 29 * hash + Objects.hashCode(this.location);
+        hash = 29 * hash + Objects.hashCode(this.status);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        final Server other = (Server) obj;
+        
+        System.out.println( this.code.equals( other.getCode() ) );
+        System.out.println( other.getCode() + " vs " + this.code );
+        System.out.println( other.getLocation() + " vs " + this.location );
+        
+        
+        if ( !this.code.equals( other.getCode() ) ) {
+            
+            return false;
+        }
+        
+        return true;
+    }
+
+    
 }

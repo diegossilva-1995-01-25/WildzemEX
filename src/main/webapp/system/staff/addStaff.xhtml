@@ -40,20 +40,30 @@
                                value="#{staffController.currentStaff.status}" style="width:130px" />
                      
                   <p:outputLabel value="Position" for="input-position" />
-                  <p:inputText id="input-position" maxlength="15" required="true"
-                               value="#{staffController.currentStaff.staffPosition}" style="width:185px"
-                               requiredMessage="Position is required!"/>
+                  <p:selectOneMenu id="input-position" converter="staffPositionConverter"
+                                   value="#{staffController.currentStaff.staffPosition}">
+                     
+                     <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
+                     <f:selectItems value="#{staffController.positionList}" var="staffPos"
+                                    itemLabel="#{staffPos.position}" itemValue="#{staffPos}" />
+
+                  </p:selectOneMenu> 
                      
                   <p:outputLabel value="Server" for="input-server" />
-                  <p:inputText id="input-server" maxlength="15" required="true"
-                               value="#{staffController.currentStaff.server}" style="width:185px"
-                               requiredMessage="Server is required!"/>
+                  <p:selectOneMenu id="input-server" converter="serverConverter"
+                               value="#{staffController.currentStaff.server}">
+                  
+                     <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
+                     <f:selectItems value="#{staffController.serverList}" var="server"
+                                    itemLabel="#{server.location}" itemValue="#{server}" />
+                     
+                  </p:selectOneMenu>
                      
                   <p:spacer/>
                   
                   <p:commandButton value="Salvar" id="commandButton-addNew" icon="ui-icon-gear"
                                    actionListener="#{staffController.addNew}" update="form-fields"/>
-                     
+                        
                </h:panelGrid>
                   
                <p:messages showDetail="true" autoUpdate="true" closable="true" severity="warn"/>
