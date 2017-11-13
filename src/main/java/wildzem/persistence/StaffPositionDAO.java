@@ -13,7 +13,7 @@ import wildzem.model.StaffPosition;
  * K = String
  * 
  */
-public class StaffPositionDAO extends GenericDAO<StaffPosition, String> {
+public class StaffPositionDAO extends GenericDAO<StaffPosition, Byte> {
 
     public StaffPositionDAO() {
         super(StaffPosition.class);

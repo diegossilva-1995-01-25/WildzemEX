@@ -23,6 +23,17 @@
          <p:inputText id="input-pass" maxlength="20"
                       value="#{playerController.currentPlayer.login}" style="width:185px"/>
          
+         <p:outputLabel value="Server" for="input-server" />
+         <p:selectOneMenu id="input-server" converter="serverConverter"
+                          value="#{playerController.currentPlayer.server}"
+                          required="true" requiredMessage="Server is required!">
+                  
+            <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
+            <f:selectItems value="#{playerController.serverList}" var="server"
+                           itemLabel="#{server.location}" itemValue="#{server}" />
+                     
+         </p:selectOneMenu>
+         
          <p:outputLabel value="Status" for="input-name" />
          <p:inputText id="input-name" maxlength="10"
                       value="#{playerController.currentPlayer.status}" style="width:130px" />
@@ -31,11 +42,11 @@
          <p:commandButton value="Update" id="button-update" icon="ui-icon-gear"
                           update="form-list" actionListener="#{playerController.updateRecord}"
                           oncomplete="if (args &amp;&amp; !args.validationFailed) PF('dialog-edit').hide();"/>
-         
-         <p:spacer/>
-         <p:messages showDetail="false" autoUpdate="true" severity="error"/>
+  
       </h:panelGrid>
   
+      <p:messages showDetail="false" autoUpdate="true" severity="error"/>
+      
    </h:form>
    
 </ui:composition>

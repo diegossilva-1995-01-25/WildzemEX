@@ -27,6 +27,17 @@
          <p:inputText id="input-name" maxlength="10"
                       value="#{staffController.currentStaff.name}" style="width:130px" />
          
+         <p:outputLabel value="Position" for="input-position" />
+         <p:selectOneMenu id="input-position" converter="staffPositionConverter"
+                          value="#{staffController.currentStaff.staffPosition}"
+                          required="true" requiredMessage="Staff Position is required!">
+                     
+            <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
+            <f:selectItems value="#{staffController.positionList}" var="staffPos"
+                           itemLabel="#{staffPos.position}" itemValue="#{staffPos}" />
+
+         </p:selectOneMenu> 
+         
          <p:outputLabel value="E-Mail" for="input-email" />
          <p:inputText id="input-email" maxlength="30"
                       value="#{staffController.currentStaff.email}" style="width:350px" />
@@ -35,25 +46,15 @@
          <p:inputText id="input-status" maxlength="10"
                       value="#{staffController.currentStaff.status}" style="width:130px" />
          
-         <p:outputLabel value="Position" for="input-position" />
-         <p:inputText id="input-position" maxlength="15" required="true"
-                      value="#{staffController.currentStaff.staffPosition}" style="width:185px"
-                      requiredMessage="Position is required!" />
-         
-         <p:outputLabel value="Server" for="input-server" />
-         <p:inputText id="input-server" maxlength="15" required="true"
-                      value="#{staffController.currentStaff.server}" style="width:185px"
-                      requiredMessage="Server is required!" />
-         
          <p:spacer/>
          <p:commandButton value="Update" id="button-update" icon="ui-icon-gear"
                           update="form-list" actionListener="#{staffController.updateRecord}"
                           oncomplete="if (args &amp;&amp; !args.validationFailed) PF('dialog-edit').hide();"/>
-         
-         <p:spacer/>
-         <p:messages showDetail="false" autoUpdate="true" severity="error"/>
+
       </h:panelGrid>
-  
+
+      <p:messages showDetail="false" autoUpdate="true" severity="error"/>
+      
    </h:form>
    
 </ui:composition>

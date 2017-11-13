@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<ui:composition template="/WEB-INF/template/layoutBase.xhtml">
+   
+   <ui:define name="content">
+         
+      <p:tabView style="width:360px; height:auto; margin:auto;">
+         <p:tab title="Add new Staff member">
+            <h:form id="staff-form">
+                  
+               <h:panelGrid id="form-fields" columns="2" cellpadding="10">
+                  
+                  <p:outputLabel value="Code" for="code" />
+                  <p:inputText id="code" maxlength="2" required="true" style="width:42px;"
+                               value="#{staffPositionController.staffPosition.code}" 
+                               requiredMessage="Code is required!" />
+                  
+                  <p:outputLabel value="Position" for="position" />
+                  <p:inputText id="position" maxlength="15" required="true" style="width:185px;"
+                               value="#{staffPositionController.staffPosition.position}" 
+                               requiredMessage="Position is required!" />
+                  
+                  <p:outputLabel value="Access Level" for="accessLevel" />
+                  <p:selectOneMenu id="accessLevel" required="true"
+                                   value="#{staffPositionController.staffPosition.accessLevel}" >
+                  
+                     <f:selectItem itemLabel="Select one" value="#{null}" />
+                     <f:selectItem itemLabel="1" itemValue="1" />
+                     <f:selectItem itemLabel="2" itemValue="2" />
+                     <f:selectItem itemLabel="3" itemValue="3" />
+                     
+                  </p:selectOneMenu>
+                  
+                  <p:outputLabel value="Description" for="description" />
+                  <h:panelGrid>
+                     <p:inputTextarea id="description" maxlength="50" rows="3" style="width:200px;"
+                                      value="#{staffPositionController.staffPosition.description}" 
+                                      counter="display" counterTemplate="{0}/50 characters." />
+
+                     <h:outputText id="display" />
+                  </h:panelGrid>
+               
+                  <p:spacer/>
+                  
+                  <p:commandButton value="Add new" id="commandButton-addNew" icon="ui-icon-gear"
+                                   actionListener="#{staffPositionController.addNew}" update="form-fields"/>
+                        
+               </h:panelGrid>
+                  
+               <p:messages showDetail="true" autoUpdate="true" closable="true" severity="warn"/>
+               <p:messages autoUpdate="true" closable="true" severity="error"/>		
+		   <p:messages showDetail="true" autoUpdate="true" closable="true" severity="info"/>
+                  
+            </h:form>
+         </p:tab>
+      </p:tabView>
+         
+   </ui:define>
+	
+</ui:composition>
+   
+</html>
+

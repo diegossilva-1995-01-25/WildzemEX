@@ -1,4 +1,4 @@
-package wildzem.model.converter;
+package wildzem.controller.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,13 +14,11 @@ public class StaffPositionConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
+    
+        GenericDAO<StaffPosition, Byte> dao = new StaffPositionDAO();
+        Byte key = Byte.parseByte(value);
         
-        System.out.println("SPC " + value);
-        
-        GenericDAO<StaffPosition, String> dao = new StaffPositionDAO();
-        StaffPosition sp = (StaffPosition) dao.select(value);
-
-        return sp;
+        return dao.select(key);
     }
 
     @Override
@@ -31,7 +29,9 @@ public class StaffPositionConverter implements Converter {
         if (value instanceof StaffPosition) {
             
             staffPosition = (StaffPosition) value;
-            return staffPosition.getCode();
+            String key = Byte.toString( staffPosition.getId() );
+            
+            return key;
         }
         
         return "";

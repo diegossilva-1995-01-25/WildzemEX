@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import wildzem.controller.GenericController;
 import wildzem.model.Player;
+import wildzem.model.Server;
 import wildzem.persistence.GenericDAO;
 import wildzem.persistence.PlayerDAO;
 import wildzem.utils.CommonOperations;
@@ -25,6 +26,7 @@ public class PlayerController implements Serializable, GenericController<Player>
     
     
     @Inject private Player currentPlayer;
+    @Inject private List<Server> serverList;
     private GenericDAO<Player, Integer> playerDao;
     
     @Produces 
@@ -90,7 +92,6 @@ public class PlayerController implements Serializable, GenericController<Player>
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
-
     
     public List<Player> getPlayerList() {
         return playerList;
@@ -98,4 +99,12 @@ public class PlayerController implements Serializable, GenericController<Player>
     public void setPlayerList(List<Player> playerList) {
         this.playerList = playerList;
     }
+
+    public List<Server> getServerList() {
+        return serverList;
+    }
+    public void setServerList(List<Server> serverList) {
+        this.serverList = serverList;
+    } 
+    
 }

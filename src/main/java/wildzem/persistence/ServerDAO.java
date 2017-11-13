@@ -13,7 +13,7 @@ import wildzem.model.Server;
  * K = String
  * 
  */
-public class ServerDAO extends GenericDAO<Server, String> {
+public class ServerDAO extends GenericDAO<Server, Byte> {
 
     public ServerDAO() {
         super(Server.class);

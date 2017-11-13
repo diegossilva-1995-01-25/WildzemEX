@@ -10,14 +10,19 @@
    <h:form>
       <h:panelGrid id="form-fields" columns="2" cellpadding="10">
          
+         <p:outputLabel value="ID" for="input-id" />
+         <p:inputText id="input-id" value="#{serverController.currentServer.id}" 
+                      readonly="true" style="width:53px"/>
+         
          <p:outputLabel value="Code" for="input-code" />
-         <p:inputText id="input-code" value="#{serverController.currentServer.code}" 
-                      readonly="true" style="width:42px"/>
+         <p:inputText id="input-code" maxlength="2" required="true" 
+                      value="#{serverController.currentServer.code}" 
+                      requiredMessage="Code is required!" style="width:42px" />
          
          <p:outputLabel value="Location" for="input-location" />
          <p:inputText id="input-location" maxlength="15" required="true" 
-                      value="#{serverController.currentServer.location}" style="width:185px"
-                      requiredMessage="Location is required!" />
+                      value="#{serverController.currentServer.location}" 
+                      requiredMessage="Location is required!" style="width:185px" />
          
          <p:outputLabel value="Status" for="input-status" />
          <p:inputText id="input-status" maxlength="10"
@@ -27,11 +32,11 @@
          <p:commandButton value="Update" id="button-update" icon="ui-icon-gear"
                           update="form-list" actionListener="#{serverController.updateRecord}"
                           oncomplete="if (args &amp;&amp; !args.validationFailed) PF('dialog-edit').hide();"/>
-         
-         <p:spacer/>
-         <p:messages showDetail="false" autoUpdate="true" severity="error"/>
+               
       </h:panelGrid>
   
+      <p:messages showDetail="false" autoUpdate="true" severity="error"/>
+      
    </h:form>
    
 </ui:composition>

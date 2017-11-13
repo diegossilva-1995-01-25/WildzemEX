@@ -4,9 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<ui:composition template="/template/layoutBase.xhtml">
+<ui:composition template="/WEB-INF/template/layoutBase.xhtml">
 
    <ui:define name="content">
          
@@ -25,13 +26,24 @@
                   <p:inputText id="input-login" maxlength="15"
                                value="#{playerController.currentPlayer.login}" style="width:185px"/>
                      
+                  <p:outputLabel value="Server" for="input-server" />      
+                  <p:selectOneMenu id="input-server" converter="serverConverter"
+                                   value="#{playerController.currentPlayer.server}"
+                                   required="true" requiredMessage="Server is required!">
+                  
+                     <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
+                     <f:selectItems value="#{playerController.serverList}" var="server"
+                                    itemLabel="#{server.location}" itemValue="#{server}" />
+                     
+                  </p:selectOneMenu>
+                  
                   <p:outputLabel value="Status" for="input-status" />
                   <p:inputText id="input-status" maxlength="10"
                                value="#{playerController.currentPlayer.status}" style="width:130px" />
-                                      
+                                   
                   <p:spacer/>
                   
-                  <p:commandButton value="Salvar" id="commandButton-addNew" icon="ui-icon-gear"
+                  <p:commandButton value="Add new" id="commandButton-addNew" icon="ui-icon-gear"
                                    actionListener="#{playerController.addNew}" update="form-fields"/>
                      
                </h:panelGrid>

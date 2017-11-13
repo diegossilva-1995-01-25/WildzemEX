@@ -1,4 +1,4 @@
-package wildzem.model.converter;
+package wildzem.controller.converter;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -14,12 +14,10 @@ public class ServerConverter implements Converter {
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         
-        System.out.println("SC " + value);
+        GenericDAO<Server, Byte> dao = new ServerDAO();
+        Byte key = Byte.parseByte(value);
         
-        GenericDAO<Server, String> dao = new ServerDAO();
-        Server server = (Server) dao.select(value);
-        
-        return server;
+        return dao.select(key);
     }
 
     @Override
@@ -30,7 +28,9 @@ public class ServerConverter implements Converter {
         if (value instanceof Server) {
             
             server = (Server) value;
-            return server.getCode();
+            String key = Byte.toString( server.getId() );
+            
+            return key;
         }
         
         return "";

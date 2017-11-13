@@ -7,19 +7,19 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<ui:composition template="/template/layoutBase.xhtml">
+<ui:composition template="/WEB-INF/template/layoutBase.xhtml">
 
    <ui:define name="content">
       
       <p:dialog header="Edit staff member" id="dialog-edit"
-                widgetVar="dialog-edit" modal="true"
+                widgetVar="dialog-edit" modal="true" resizable="false"
                 height="auto" width="500px">
-         <ui:include src="/system/staff/editStaff.xhtml" />
+         <ui:include src="/system/player/editPlayer.xhtml" />
       </p:dialog>
       
-      <h:form style="margin:auto;margin-left:2%;" id="form-list">
+      <h:form id="form-list">
          <p:dataTable id="dataTable" var="player" value="#{playerController.playerList}" 
-			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="width:98%;"
+			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="margin:auto; width:50%;"
                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
             
             <p:column headerText="ID" style="width:75px;">
@@ -30,11 +30,15 @@
                <h:outputText value="#{player.character}"/>
             </p:column>
             
-            <p:column headerText="In-Game login" style="width:35%;">
+            <p:column headerText="In-Game login" style="width:25%;">
                <h:outputText value="#{player.login}"/>
             </p:column>
             
-            <p:column headerText="Win count" style="width:35%;">
+            <p:column headerText="Server" style="width:20%;">
+               <h:outputText value="#{player.server.location}"/>
+            </p:column>
+            
+            <p:column headerText="Win count" style="width:25%;">
                <h:outputText value="#{player.winCount}"/>
             </p:column>
             

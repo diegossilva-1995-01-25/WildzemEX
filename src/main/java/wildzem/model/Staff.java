@@ -2,9 +2,7 @@ package wildzem.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -12,7 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import wildzem.model.converter.StaffPositionConverter;
 
 /**
  *
@@ -28,32 +25,28 @@ import wildzem.model.converter.StaffPositionConverter;
 public class Staff implements Serializable { 
 
     @Id
-    @Column(name="ST_USERID", columnDefinition = "INT", length = 5)
+    @Column(name="ST_USERID", columnDefinition = "MEDIUMINT", length = 5)
     private int id;
     
-    @Column(name="ST_USER", columnDefinition = "VARCHAR", length = 15)
+    @Column(name="ST_USER")
     private String user;
     
-    @Column(name="ST_PASSWORD", columnDefinition = "VARCHAR", length = 20)
+    @Column(name="ST_PASSWORD")
     private String password;
     
-    @Column(name="ST_NAME", columnDefinition = "VARCHAR", length = 10)
+    @Column(name="ST_NAME")
     private String name;
     
-    @Column(name="ST_EMAIL", columnDefinition = "VARCHAR", length = 30)
+    @Column(name="ST_EMAIL")
     private String email;
     
-    @Column(name="ST_STATUS", columnDefinition = "VARCHAR", length = 10)
+    @Column(name="ST_STATUS")
     private String status;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ST_POSITION", nullable = false)
+    @JoinColumn(name = "ST_POSITION", nullable = false, referencedColumnName = "SP_POSITIONID")
     private StaffPosition staffPosition;
     
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ST_SERVER", nullable = false)
-    private Server server;
-
     /*
      * Getter/Setter section
      */
@@ -105,28 +98,21 @@ public class Staff implements Serializable {
     public void setStaffPosition(StaffPosition staffPosition) {
         this.staffPosition = staffPosition;
     }
-  
-    public Server getServer() {
-        return server;
-    }
-    public void setServer(Server server) {
-        this.server = server;
-    }
     
     /*
      * Equals/Hash Code section
      */
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 23 * hash + this.id;
-        hash = 23 * hash + Objects.hashCode(this.user);
-        hash = 23 * hash + Objects.hashCode(this.password);
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + Objects.hashCode(this.email);
-        hash = 23 * hash + Objects.hashCode(this.status);
-        hash = 23 * hash + Objects.hashCode(this.staffPosition);
-        hash = 23 * hash + Objects.hashCode(this.server);
+        int hash = 7;
+        hash = 47 * hash + this.id;
+        hash = 47 * hash + Objects.hashCode(this.user);
+        hash = 47 * hash + Objects.hashCode(this.password);
+        hash = 47 * hash + Objects.hashCode(this.name);
+        hash = 47 * hash + Objects.hashCode(this.email);
+        hash = 47 * hash + Objects.hashCode(this.status);
+        hash = 47 * hash + Objects.hashCode(this.staffPosition);
         return hash;
     }
 
@@ -161,9 +147,6 @@ public class Staff implements Serializable {
             return false;
         }
         if (!Objects.equals(this.staffPosition, other.staffPosition)) {
-            return false;
-        }
-        if (!Objects.equals(this.server, other.server)) {
             return false;
         }
         return true;

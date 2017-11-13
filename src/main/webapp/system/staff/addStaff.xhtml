@@ -7,7 +7,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<ui:composition template="/template/layoutBase.xhtml">
+<ui:composition template="/WEB-INF/template/layoutBase.xhtml">
    
    <ui:define name="content">
          
@@ -31,6 +31,17 @@
                   <p:inputText id="input-name" maxlength="10"
                                value="#{staffController.currentStaff.name}" style="width:130px" />
                      
+                  <p:outputLabel value="Position" for="input-position" />
+                  <p:selectOneMenu id="input-position" converter="staffPositionConverter"
+                                   value="#{staffController.currentStaff.staffPosition}"
+                                   required="true" requiredMessage="Staff Position is required!">
+                     
+                     <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
+                     <f:selectItems value="#{staffController.positionList}" var="staffPos"
+                                    itemLabel="#{staffPos.position}" itemValue="#{staffPos}" />
+
+                  </p:selectOneMenu>   
+                  
                   <p:outputLabel value="E-Mail" for="input-email" />
                   <p:inputText id="input-email" maxlength="30"
                                value="#{staffController.currentStaff.email}" style="width:350px" />
@@ -38,30 +49,10 @@
                   <p:outputLabel value="Status" for="input-status" />
                   <p:inputText id="input-status" maxlength="10"
                                value="#{staffController.currentStaff.status}" style="width:130px" />
-                     
-                  <p:outputLabel value="Position" for="input-position" />
-                  <p:selectOneMenu id="input-position" converter="staffPositionConverter"
-                                   value="#{staffController.currentStaff.staffPosition}">
-                     
-                     <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
-                     <f:selectItems value="#{staffController.positionList}" var="staffPos"
-                                    itemLabel="#{staffPos.position}" itemValue="#{staffPos}" />
-
-                  </p:selectOneMenu> 
-                     
-                  <p:outputLabel value="Server" for="input-server" />
-                  <p:selectOneMenu id="input-server" converter="serverConverter"
-                               value="#{staffController.currentStaff.server}">
-                  
-                     <f:selectItem itemLabel="Select one" itemValue="#{null}"/>
-                     <f:selectItems value="#{staffController.serverList}" var="server"
-                                    itemLabel="#{server.location}" itemValue="#{server}" />
-                     
-                  </p:selectOneMenu>
-                     
+                                                      
                   <p:spacer/>
                   
-                  <p:commandButton value="Salvar" id="commandButton-addNew" icon="ui-icon-gear"
+                  <p:commandButton value="Add new" id="commandButton-addNew" icon="ui-icon-gear"
                                    actionListener="#{staffController.addNew}" update="form-fields"/>
                         
                </h:panelGrid>

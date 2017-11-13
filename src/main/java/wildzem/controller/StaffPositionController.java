@@ -27,7 +27,7 @@ public class StaffPositionController implements Serializable, GenericController<
     private static final long serialVersionUID = 1L;
     
     @Inject private StaffPosition currentStaffPosition;
-    private GenericDAO<StaffPosition, String> staffPositionDao;
+    private GenericDAO<StaffPosition, Byte> staffPositionDao;
     
     @Produces 
     @Named("positionList")
@@ -64,6 +64,7 @@ public class StaffPositionController implements Serializable, GenericController<
     @Override
     public void editRecord(StaffPosition staffPosition) {
         
+        currentStaffPosition = staffPosition;
     }
 
     @Override
@@ -76,7 +77,7 @@ public class StaffPositionController implements Serializable, GenericController<
     @Override
     public void deleteRecord(StaffPosition staffPosition) {
         
-        staffPositionDao.delete(staffPosition.getCode());
+        staffPositionDao.delete(staffPosition.getId());
         staffPositionList.remove(staffPosition);
     }
     

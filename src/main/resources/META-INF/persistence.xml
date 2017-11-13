@@ -3,22 +3,23 @@
   <persistence-unit name="Wildzem" transaction-type="RESOURCE_LOCAL">
     <description>Persistence mapping for Wildzem</description>
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    
     <class>wildzem.model.Player</class>
     <class>wildzem.model.Staff</class>
     <class>wildzem.model.Server</class>
     <class>wildzem.model.StaffConverter</class>
-    
-    <class>wildzem.model.converter.StaffPositionConverter</class>
-    <class>wildzem.model.converter.ServerConverter</class>
+    <class>wildzem.controller.converter.ServerConverter</class>
+    <class>wildzem.controller.converter.StaffPositionConverter</class>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="validate"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-      
-      <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/> <!-- DB Driver -->
-      <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://127.0.0.1:3306/wildzem"/> <!-- DB URL    -->
-      <property name="javax.persistence.jdbc.user" value="root"/> <!-- DB User   -->
-      <property name="javax.persistence.jdbc.password" value="rootpass"/> <!-- DB Pass   -->
+      <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+      <!-- DB Driver -->
+      <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://127.0.0.1:3306/wildzem"/>
+      <!-- DB URL    -->
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <!-- DB User   -->
+      <property name="javax.persistence.jdbc.password" value="rootpass"/>
+      <!-- DB Pass   -->
     </properties>
   </persistence-unit>
 </persistence>

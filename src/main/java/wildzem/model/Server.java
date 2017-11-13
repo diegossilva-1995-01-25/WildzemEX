@@ -20,18 +20,28 @@ import javax.persistence.Table;
 public class Server implements Serializable {
 
     @Id
+    @Column(name="SV_SERVERID", columnDefinition = "TINYINT")
+    private byte id;
+    
     @Column(name="SV_CODE", columnDefinition = "CHAR", length = 2)
     private String code;
 
-    @Column(name="SV_LOCATION", columnDefinition = "VARCHAR", length = 15)
+    @Column(name="SV_LOCATION")
     private String location;
     
-    @Column(name="SV_STATUS", columnDefinition = "VARCHAR", length = 10)
+    @Column(name="SV_STATUS")
     private String status;
 	
     /*
      * Getter/Setter section
      */
+    public byte getId() {
+        return id;
+    }
+    public void setId(byte id) {
+        this.id = id;
+    } 
+    
     public String getCode() {
         return code;
     }	
@@ -78,11 +88,6 @@ public class Server implements Serializable {
         }
         
         final Server other = (Server) obj;
-        
-        System.out.println( this.code.equals( other.getCode() ) );
-        System.out.println( other.getCode() + " vs " + this.code );
-        System.out.println( other.getLocation() + " vs " + this.location );
-        
         
         if ( !this.code.equals( other.getCode() ) ) {
             

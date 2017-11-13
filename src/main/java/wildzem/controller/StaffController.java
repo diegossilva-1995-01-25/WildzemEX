@@ -11,9 +11,7 @@ import wildzem.model.Server;
 import wildzem.model.Staff;
 import wildzem.model.StaffPosition;
 import wildzem.persistence.GenericDAO;
-import wildzem.persistence.ServerDAO;
 import wildzem.persistence.StaffDAO;
-import wildzem.persistence.StaffPositionDAO;
 import wildzem.utils.CommonOperations;
 
 /**
@@ -28,7 +26,6 @@ public class StaffController implements Serializable, GenericController<Staff> {
     
     
     @Inject private Staff currentStaff;
-    @Inject private List<Server> serverList;
     @Inject private List<StaffPosition> positionList;
     private GenericDAO<Staff, Integer> staffDao;
     
@@ -100,21 +97,11 @@ public class StaffController implements Serializable, GenericController<Staff> {
         this.staffList = staffList;
     } 
 
-    public List<Server> getServerList() {
-        return serverList;
-    }
-
-    public void setServerList(List<Server> serverList) {
-        this.serverList = serverList;
-    }
-
     public List<StaffPosition> getPositionList() {
         return positionList;
     }
-
     public void setPositionList(List<StaffPosition> positionList) {
         this.positionList = positionList;
-    }
-    
+    } 
     
 }

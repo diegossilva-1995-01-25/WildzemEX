@@ -19,7 +19,9 @@
             
             <p:submenu label="Staff" icon="ui-icon-pencil" style="margin-top: 10px" >
                <p:menuitem value="Add new staff" icon="ui-icon-plus" url="/system/staff/addStaff.xhtml"/>
+               <p:menuitem value="Add new staff position" icon="ui-icon-plus" url="/system/staff/addStaffPos.xhtml"/>
                <p:menuitem value="Staff list" icon="ui-icon-calculator" url="/system/staff/listStaff.xhtml"/>
+               <p:menuitem value="Staff position list" icon="ui-icon-calculator" url="/system/staff/listStaffPos.xhtml"/>
 		</p:submenu>
             
             <p:submenu label="Server" icon="ui-icon-pencil" style="margin-top: 10px" >
@@ -38,7 +40,7 @@
 		</p:submenu>
             
 		<f:facet name="options">
-               <h:outputText value="Welcome #{loginController.staff.name}!" style="margin-top:10px; margin-right:15px;"/>
+               <h:outputText value="Welcome #{loginController.staffSession.name}!" style="margin-top:10px; margin-right:15px;"/>
                <p:commandButton value="Logout" icon="ui-icon-extlink" action="#{loginController.logOut}" style="margin-top: 10px"/>
 		</f:facet>
          </p:menubar> 

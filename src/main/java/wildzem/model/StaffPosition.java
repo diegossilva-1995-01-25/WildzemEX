@@ -20,21 +20,31 @@ public class StaffPosition implements Serializable {
 
     
     @Id
+    @Column(name="SP_POSITIONID", columnDefinition = "TINYINT")
+    private byte id;
+    
     @Column(name="SP_CODE", columnDefinition = "CHAR", length = 2)
     private String code;
 
-    @Column(name="SP_POSITION", columnDefinition = "VARCHAR", length = 15)
+    @Column(name="SP_POSITION")
     private String position;
 
-    @Column(name="SP_ACCESS_LEVEL", columnDefinition = "TINYINT", length = 1)
+    @Column(name="SP_ACCESS_LEVEL")
     private byte accessLevel;
     
-    @Column(name="SP_DESCRIPTION", columnDefinition = "VARCHAR", length = 50)
+    @Column(name="SP_DESCRIPTION")
     private String description;
 
     /*
      * Getter/Setter section
      */
+    public byte getId() {
+        return id;
+    }
+    public void setId(byte id) {
+        this.id = id;
+    }
+     
     public String getCode() {
         return code;
     }	
@@ -89,11 +99,6 @@ public class StaffPosition implements Serializable {
         }
         
         final StaffPosition other = (StaffPosition) obj;
-        
-        System.out.println( this.code.equals( other.getCode() ) );
-        System.out.println( other.getCode() + " vs " + this.code );
-        System.out.println( other.getPosition() + " vs " + this.position );
-        System.out.println( other.getAccessLevel()+ " vs " + this.accessLevel );
         
         if ( !this.code.equals( other.getCode() ) ) {
             

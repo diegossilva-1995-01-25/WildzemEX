@@ -24,7 +24,7 @@ public class ServerController implements Serializable, GenericController<Server>
     
     
     @Inject private Server currentServer;
-    private GenericDAO<Server, String> serverDao;
+    private GenericDAO<Server, Byte> serverDao;
     
     @Produces 
     @Named("serverList")
@@ -75,7 +75,7 @@ public class ServerController implements Serializable, GenericController<Server>
     @Override
     public void deleteRecord(Server server) {
         
-        serverDao.delete( server.getCode() );
+        serverDao.delete( server.getId() );
         serverList.remove(server);
     }
     

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/layoutBase.xhtml">
+
+   <ui:define name="content">
+      
+      <p:dialog header="Edit staff position" id="dialog-edit"
+                widgetVar="dialog-edit" modal="true" resizable="false"
+                height="auto" width="360px">
+         <ui:include src="/system/staff/editStaffPos.xhtml" />
+      </p:dialog>
+      
+      <h:form id="form-list">
+         <p:dataTable id="dataTable" var="staffPosition" value="#{staffPositionController.staffPositionList}" 
+			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="margin:auto; width:50%;"
+                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+            
+            <p:column headerText="ID" style="width:35px;">
+               <h:outputText value="#{staffPosition.id}"/>
+            </p:column>
+            
+            <p:column headerText="Code" style="width:25px;">
+               <h:outputText value="#{staffPosition.code}"/>
+            </p:column>
+            
+            <p:column headerText="Position" style="width:16.67%;">
+               <h:outputText value="#{staffPosition.position}"/>
+            </p:column>
+            
+            <p:column headerText="Access Level" style="width:11.11%;">
+               <h:outputText value="#{staffPosition.accessLevel}"/>
+            </p:column>
+            
+            <p:column headerText="Description" style="width:72.21%;">
+               <h:outputText value="#{staffPosition.description}"/>
+            </p:column> 
+           
+            <p:column headerText="" style="width:25px;">
+               <p:commandButton icon="ui-icon-pencil" title="Edit staff position" ajax="true"
+                                oncomplete="PF('dialog-edit').show();" update="dialog-edit"
+                                actionListener="#{staffPositionController.editRecord(staffPosition)}"/>
+            </p:column>
+            
+            <p:column headerText="" style="width:25px;">
+               <p:commandButton icon="ui-icon-trash" title="Delete staff position" ajax="true"
+                                update="@form" actionListener="#{staffPositionController.deleteRecord(staffPosition)}"/>
+            </p:column>
+            
+         </p:dataTable>
+      </h:form>
+      
+   </ui:define>
+	
+</ui:composition>
+   
+</html>
+
