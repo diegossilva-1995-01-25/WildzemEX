@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+   <h:form>
+      <h:panelGrid id="form-fields" columns="2" cellpadding="10">
+         
+         <p:outputLabel value="ID" for="input-id" />
+         <p:inputText id="input-id" value="#{quizCategoryController.currentType.id}" 
+                      readonly="true" style="width:53px"/>
+         
+         <p:outputLabel value="Code" for="input-code" />
+         <p:inputText id="input-code" maxlength="3" required="true" 
+                      value="#{quizCategoryController.currentType.code}" 
+                      requiredMessage="Code is required!" style="width:42px" />
+         
+         <p:outputLabel value="Name" for="input-name" />
+         <p:inputText id="input-name" maxlength="20" required="true" 
+                      value="#{quizCategoryController.currentType.name}" 
+                      requiredMessage="Name is required!" style="width:240px" />
+         
+         <p:outputLabel value="Description" for="input-description" />
+         <h:panelGrid>
+            <p:inputTextarea id="input-description" maxlength="100" rows="5" style="width:240px;"
+                             value="#{quizCategoryController.currentCcurrentTypetion}" 
+                             counter="display" counterTemplate="{0}/100 characters." />
+            
+            <h:outputText id="display" />
+         </h:panelGrid> 
+         
+         <p:spacer/>
+         <p:commandButton value="Update" id="button-update" icon="ui-icon-gear"
+                          update="form-list" actionListener="#{quizCategoryController.updateRecord}"
+                          oncomplete="if (args &amp;&amp; !args.validationFailed) PF('dialog-edit').hide();"/>
+               
+      </h:panelGrid>
+  
+      <p:messages showDetail="false" autoUpdate="true" severity="error"/>
+      
+   </h:form>
+   
+</ui:composition>

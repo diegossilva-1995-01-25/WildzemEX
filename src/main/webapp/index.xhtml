@@ -17,7 +17,7 @@
 <h:body style="display:flex;">
 
    <h:form style="margin:auto; text-align: center;">
-      <p:growl id="growlm" showDetail="true" sticky="true"/>
+      <p:growl id="messages" showDetail="true" sticky="true"/>
 		
       <p:graphicImage url="./resources/images/logo_med.png" style="margin-bottom:10px;" />
       <p:panel id="login-panel" header="Login" footer="Wildz Event Manager" style="width:400px;">
@@ -27,15 +27,15 @@
             <p:graphicImage url="./resources/images/loginL.png" />
             <h:panelGrid columns="2" cellpadding="5">
                   
-               <p:outputLabel value="Username" />
-               <p:inputText id="inText-user" value="#{loginController.staff.user}"/>
+               <p:outputLabel value="Username" for="input-user" />
+               <p:inputText id="input-user" value="#{loginController.staff.login}"/>
 					
-               <p:outputLabel value="Password"  />
-               <p:password id="inText-password" value="#{loginController.staff.password}" />
+               <p:outputLabel value="Password"  for="input-password" />
+               <p:password id="input-password" value="#{loginController.staff.password}" />
 					
                <h:outputText value="&#160;" />
-               <p:commandButton id="inButton-login" value="Login" icon="ui-icon-gear"
-                                   action="#{loginController.logIn}" update="growlm"/>
+               <p:commandButton id="button-login" value="Login" icon="ui-icon-gear"
+                                   action="#{loginController.logIn}" update="messages"/>
                   
             </h:panelGrid>
                

@@ -10,42 +10,42 @@
 
    <ui:define name="content">
       
-      <p:dialog header="Edit server" id="dialog-edit"
+      <p:dialog header="Edit quiz type" id="dialog-edit"
                 widgetVar="dialog-edit" modal="true" resizable="false"
-                height="auto" width="325px">
-         <ui:include src="/system/server/editServer.xhtml" />
+                height="auto" width="400px">
+         <ui:include src="/system/quiz/editQuizType.xhtml" />
       </p:dialog>
       
       <h:form id="form-list">
-         <p:dataTable id="dataTable" var="server" value="#{serverController.serverList}" 
-			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="margin:auto; width:50%;"
+         <p:dataTable id="dataTable" var="category" value="#{quizCategoryController.typeList}" 
+			    rows="15" paginator="true" rowsPerPageTemplate="5,10,15" style="margin:auto; width:60%;"
                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
             
             <p:column headerText="ID" style="width:35px;">
-               <h:outputText value="#{server.id}"/>
+               <h:outputText value="#{category.id}"/>
             </p:column>
             
-            <p:column headerText="Code" style="width:25px;">
-               <h:outputText value="#{server.code}"/>
+            <p:column headerText="Code" style="width:27px;">
+               <h:outputText value="#{category.code}"/>
             </p:column>
             
-            <p:column headerText="Location" style="width:50%;">
-               <h:outputText value="#{server.location}"/>
+            <p:column headerText="Name" style="width:20%;">
+               <h:outputText value="#{category.name}"/>
             </p:column>
             
-            <p:column headerText="Status" style="width:50%;">
-               <h:outputText value="#{server.status}"/>
+            <p:column headerText="Description" style="width:80%;">
+               <h:outputText value="#{category.description}"/>
             </p:column>
             
             <p:column headerText="" style="width:25px;">
                <p:commandButton icon="ui-icon-pencil" title="Edit staff member" ajax="true"
                                 oncomplete="PF('dialog-edit').show();" update="dialog-edit"
-                                actionListener="#{serverController.editRecord(server)}"/>
+                                actionListener="#{quizCategoryController.editRecord(category)}"/>
             </p:column>
             
             <p:column headerText="" style="width:25px;">
                <p:commandButton icon="ui-icon-trash" title="Delete staff member" ajax="true"
-                                update="@form" actionListener="#{serverController.deleteRecord(server)}"/>
+                                update="@form" actionListener="#{quizCategoryController.deleteRecord(category)}"/>
             </p:column>
             
          </p:dataTable>

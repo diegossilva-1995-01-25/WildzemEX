@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/template/layoutBase.xhtml">
+
+   <ui:define name="content">
+         
+      <p:tabView style="width:400px; height:auto; margin:auto;">
+         <p:tab title="Add new Staff member">
+            <h:form id="staff-form">
+                  
+               <h:panelGrid id="form-fields" columns="2" cellpadding="10">
+                     
+                  <p:outputLabel value="Code" for="code" />
+                  <p:inputText id="code" maxlength="3" required="true"
+                               value="#{quizCategoryController.currentType.code}" style="width:53px"
+                               requiredMessage="Quiz code is required!"/>
+                     
+                  <p:outputLabel value="Name" for="name" />
+                  <p:inputText id="name" maxlength="20" required="true"
+                               value="#{quizCategoryController.currcurrentTypee}" style="width:240px"
+                               requiredMessage="Name is required!"/>
+                     
+                  <p:outputLabel value="Description" for="description " />
+                  <h:panelGrid>
+                     <p:inputTextarea id="description" maxlength="100" rows="5" style="width:240px;"
+                                      value="#{quizCategoryController.currentCcurrentTypetion}" 
+                                      counter="display" counterTemplate="{0}/100 characters." />
+
+                     <h:outputText id="display" />
+                  </h:panelGrid>                
+                     
+                  <p:spacer/>
+                  
+                  <p:commandButton value="Add new" id="commandButton-addNew" icon="ui-icon-gear"
+                                   actionListener="#{quizCategoryController.addNew()}" update="form-fields"/>
+                     
+               </h:panelGrid>
+                  
+               <p:messages showDetail="true" autoUpdate="true" closable="true" severity="warn"/>
+               <p:messages autoUpdate="true" closable="true" severity="error"/>		
+		   <p:messages showDetail="true" autoUpdate="true" closable="true" severity="info"/>
+                  
+            </h:form>
+         </p:tab>
+      </p:tabView>
+         
+   </ui:define>
+	
+</ui:composition>
+</html>
